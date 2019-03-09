@@ -5,10 +5,6 @@ using UnityEngine;
 public class BoxController : MonoBehaviour
 {
     IBoxStrategy strategy;
-    void Update()
-    {
-        
-    }
     private void OnTriggerEnter(Collider other)
     {
         strategy = selectBoxStrategy(other);
@@ -16,7 +12,13 @@ public class BoxController : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
+        
         strategy.useBox();
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
     }
 
     private IBoxStrategy selectBoxStrategy(Collider other)

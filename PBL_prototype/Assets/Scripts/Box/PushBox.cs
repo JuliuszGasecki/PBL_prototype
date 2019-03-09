@@ -9,12 +9,15 @@ public class PushBox : MonoBehaviour, IBoxStrategy
     public PushBox(GameObject box)
     {
         this.box = box;
-        box.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-        box.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
     }
 
     public void useBox()
     {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            box.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
+
+        }
         Debug.Log("StrategyPush");
     }
 }
