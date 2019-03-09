@@ -194,6 +194,7 @@ GameObject:
   - component: {fileID: 871964682}
   - component: {fileID: 871964681}
   - component: {fileID: 871964680}
+  - component: {fileID: 871964685}
   m_Layer: 0
   m_Name: Boi
   m_TagString: Untagged
@@ -290,6 +291,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &871964685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 871964679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a35ce192f1fd3c4288a0e6ffcf9fddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1
 --- !u!1 &1342186136
 GameObject:
   m_ObjectHideFlags: 0
@@ -406,7 +420,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46712f17e435f25439471ead93af0344, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 1.1
 --- !u!143 &1380198851
 CharacterController:
   m_ObjectHideFlags: 0
