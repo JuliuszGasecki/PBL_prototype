@@ -11,8 +11,7 @@ public class BoxController : MonoBehaviour
     }
 
     private void OnTriggerStay(Collider other)
-    {
-        
+    { 
         strategy.useBox();
     }
 
