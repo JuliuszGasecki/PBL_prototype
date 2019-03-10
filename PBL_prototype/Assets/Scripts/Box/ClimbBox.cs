@@ -22,9 +22,7 @@ public class ClimbBox : MonoBehaviour, IBoxStrategy
         if (Input.GetKeyDown(KeyCode.E))
         {
             isClimbing = true;
-            Debug.Log("Checked. Is climbing = " + isClimbing);
         }
-        Debug.Log("ClimbBox");
         checkClimbingFlagAndClimb();
     }
 
@@ -32,7 +30,6 @@ public class ClimbBox : MonoBehaviour, IBoxStrategy
     {
         if (isClimbing)
         {
-            Debug.Log("checkClimbingFlagAndClimb ");
             turnOffYBlockForGirl();
             turnOffGravityForGirl();
             changeGirlPosition();
@@ -66,22 +63,18 @@ public class ClimbBox : MonoBehaviour, IBoxStrategy
         float boxPositionZ = box.GetComponent<BoxVariables>().climbPoint.z;
         if (girlPositionY < boxPositionY)
         {
-            Debug.Log("Im am climbing right now!");
             girlGameObject.transform.position = new Vector3(girlPositionX, girlPositionY + this.climbSpeed, girlPositionZ);
         }
         else
         {
-            Debug.Log("Im am in else!");
             float changedPositionX = girlPositionX;
             float changedPositionZ = girlPositionZ;
             if (checkAccuracyOfX(girlPositionX, boxPositionX))
             {
-                Debug.Log("Im am in cal X!");
                 changedPositionX = calculateChangedGirlValue(girlPositionX, boxPositionX);
             }
             if (checkAccuracyOfZ(girlPositionZ, boxPositionZ))
             {
-                Debug.Log("Im am cal Z!");
                 changedPositionZ = calculateChangedGirlValue(girlPositionZ, boxPositionZ);
             }
             transformGirlPositionXZ(changedPositionX, girlPositionY, changedPositionZ);
@@ -89,7 +82,6 @@ public class ClimbBox : MonoBehaviour, IBoxStrategy
         }
         if (checkAccuracyOfXZ(girlPositionX, girlPositionZ, boxPositionX, boxPositionZ))
         {
-            Debug.Log("Im am ending!");
             endClimbing();
         }
     }
