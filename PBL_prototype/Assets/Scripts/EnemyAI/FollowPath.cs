@@ -33,8 +33,7 @@ public class FollowPath : MonoBehaviour
                 currentNodeIndex = 0;
             }
         }
-
-        Debug.Log(currentNodeIndex);
+        
         move.Normalize();
 
         transform.Translate(move.x * speed * Time.deltaTime, 0f, move.z * speed * Time.deltaTime);
