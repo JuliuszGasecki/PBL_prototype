@@ -10,6 +10,7 @@ public class ClimbBox : MonoBehaviour, IBoxStrategy
     [SerializeField]
     private float climbSpeed = 0.1f;
     private float accuracyOfClimb = 0.03f;
+    private float boxPositionY;
 
     public ClimbBox(GameObject box)
     {
@@ -22,6 +23,8 @@ public class ClimbBox : MonoBehaviour, IBoxStrategy
         if (Input.GetKeyDown(KeyCode.E))
         {
             isClimbing = true;
+            boxPositionY = (2 * box.transform.position.y) + girlGameObject.transform.lossyScale.y;
+
         }
         checkClimbingFlagAndClimb();
     }
@@ -58,9 +61,8 @@ public class ClimbBox : MonoBehaviour, IBoxStrategy
         float girlPositionY = girlGameObject.transform.position.y;
         float girlPositionX = girlGameObject.transform.position.x;
         float girlPositionZ = girlGameObject.transform.position.z;
-        float boxPositionX = box.GetComponent<BoxVariables>().climbPoint.x;
-        float boxPositionY = box.GetComponent<BoxVariables>().climbPoint.y;
-        float boxPositionZ = box.GetComponent<BoxVariables>().climbPoint.z;
+        float boxPositionX = box.transform.position.x;
+        float boxPositionZ = box.transform.position.z;
         if (girlPositionY < boxPositionY)
         {
             girlGameObject.transform.position = new Vector3(girlPositionX, girlPositionY + this.climbSpeed, girlPositionZ);
