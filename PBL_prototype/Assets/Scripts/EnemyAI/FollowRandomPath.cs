@@ -2,14 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FollowRandomPath : MonoBehaviour
+public class FollowRandomPath : FollowPath
 {
     [SerializeField]
     private GameObject nextPathNode;
-    [SerializeField]
-    private float maxNodeDistance;
-    [SerializeField]
-    private float speed;
     [SerializeField]
     private bool canTurnBack;
     private string lastPathNodeName;
@@ -21,7 +17,7 @@ public class FollowRandomPath : MonoBehaviour
         lastPathNodeName = null;
         currentNodeName = null;
     }
-
+    
     // Update is called once per frame
     void Update()
     {
@@ -34,16 +30,14 @@ public class FollowRandomPath : MonoBehaviour
             do
             {
                 newPathNode = nextPathNode.GetComponent<PathNode>().RandNextPathNode();
-                Debug.Log(lastPathNodeName + " " + newPathNode.name);
             }while(!canTurnBack && lastPathNodeName == newPathNode.name);
            
             nextPathNode = newPathNode;
         }
-        
+
         move.Normalize();
-
-        transform.Translate(move.x * speed * Time.deltaTime, 0f, move.z * speed * Time.deltaTime);
+        move.y = 0.0f;
+        Move(move);
     }
-
     
 }

@@ -40,12 +40,20 @@ public class DetectPlayer : MonoBehaviour
 
             Gizmos.DrawRay(transform.position, player.transform.position - transform.position);
 
+          //  Gizmos.color = Color.blue;
+          //  Gizmos.DrawRay(transform.position, transform.forward * detectionDistance);
         }
     }
 
     public bool IsSeen(GameObject obj, float maxDetectionDistance)
     {
         Vector3 direction = (obj.transform.position - transform.position).normalized;
+        float angle = Vector3.Angle(gameObject.transform.forward, direction);
+       // Debug.Log(angle);
+        if(angle > viewAngle)
+        {
+            return false;
+        }
         RaycastHit raycastHit = new RaycastHit();
         bool rayHitted = Physics.Raycast(transform.position, direction, out raycastHit, maxDetectionDistance);
        

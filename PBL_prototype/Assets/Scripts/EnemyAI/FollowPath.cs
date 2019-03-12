@@ -2,42 +2,34 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FollowPath : MonoBehaviour
+public abstract class FollowPath : MonoBehaviour
 {
     [SerializeField]
-    private List<GameObject> pathNodes;
-    private int currentNodeIndex;
+    protected float maxNodeDistance;
     [SerializeField]
-    private float maxNodeDistance;
+    protected float maxAngleDifference;
     [SerializeField]
-    private float speed;
+    protected float movementSpeed;
+    [SerializeField]
+    protected float rotationSpeed;
 
-    // Start is called before the first frame update
-    void Start()
+    public void Move(Vector3 movementDirection)
     {
-        currentNodeIndex = 0;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        Vector3 move = pathNodes[currentNodeIndex].transform.position - transform.position;
-        if(Mathf.Sqrt(move.x * move.x + move.z * move.z) < maxNodeDistance)
+        float angle = Vector3.SignedAngle(transform.forward, movementDirection, Vector3.up);
+        if (angle > maxAngleDifference || angle < -1 * maxAngleDifference)
         {
-            if(currentNodeIndex < pathNodes.Count - 1)
+            if (Vector3.SignedAngle(transform.forward, movementDirection, Vector3.up) > maxAngleDifference)
             {
-                currentNodeIndex++;
+                transform.Rotate(transform.up, rotationSpeed * Time.deltaTime);
             }
             else
             {
-                currentNodeIndex = 0;
+                transform.Rotate(transform.up, -1 * rotationSpeed * Time.deltaTime);
             }
         }
-        
-        move.Normalize();
-
-        transform.Translate(move.x * speed * Time.deltaTime, 0f, move.z * speed * Time.deltaTime);
+        else
+        {
+            transform.Translate(Vector3.forward * movementSpeed * Time.deltaTime);
+        }
     }
-
-    
 }

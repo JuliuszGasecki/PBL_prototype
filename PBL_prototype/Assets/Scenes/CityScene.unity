@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -926,9 +926,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86c7265668964644b84c27d71529a0c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextPathNode: {fileID: 1151143498}
   maxNodeDistance: 0.1
-  speed: 2
+  maxAngleDifference: 1
+  movementSpeed: 2
+  rotationSpeed: 100
+  nextPathNode: {fileID: 1151143498}
   canTurnBack: 0
 --- !u!54 &498423546
 Rigidbody:
@@ -3111,13 +3113,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b1cadbc4a8f3b748b644f1d4f21693a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxNodeDistance: 0.1
+  maxAngleDifference: 1
+  movementSpeed: 2
+  rotationSpeed: 100
   pathNodes:
   - {fileID: 1830659690}
   - {fileID: 1413094727}
   - {fileID: 1899969647}
   - {fileID: 1530138873}
-  maxNodeDistance: 0.1
-  speed: 2
 --- !u!54 &1427839275
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3223,7 +3227,7 @@ MonoBehaviour:
   - {fileID: 1380198849}
   - {fileID: 871964679}
   detectionDistance: 6
-  viewAngle: 0
+  viewAngle: 90
 --- !u!4 &1463430834 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400004, guid: db3a9db1783ac5f4087a4c888caddc3b,
