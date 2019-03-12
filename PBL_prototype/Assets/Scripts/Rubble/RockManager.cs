@@ -24,13 +24,14 @@ public class RockManager : MonoBehaviour
     public float h;
 
     private GameObject RockSpawned;
-
-    private bool IsClicked;
+    private float _animation;
+    private bool IsClicked = true;
     // Start is called before the first frame update
     void Start()
     {
         for (int i = 0; i < _numberOfTrajectoryElements; i++)
             _trajectoryElements.Add(Instantiate(TrajectoryElement) as GameObject);
+        SetTrajectoryElementsActivity(false);
     }
 
     // Update is called once per frame
@@ -39,43 +40,50 @@ public class RockManager : MonoBehaviour
         Aim();
     }
 
+    private void SetTrajectoryElementsActivity(bool activity)
+    {
+        foreach(GameObject tre in _trajectoryElements)
+        {
+            tre.SetActive(activity);
+        }
+    }
+
     private void Aim()
     {
         if (Input.GetMouseButton(0))
         {
-            IsClicked = true;
             if (CanGirlThrow)
             {
                 _start = transform.position;
-                Crosshair.SetActive(true);
                 _end = Crosshair.transform.position;
+                if (IsClicked)
+                {
+                    Crosshair.SetActive(true);
+                    SetTrajectoryElementsActivity(true);
+                    IsClicked = false;
+                }
                 DrawTrajectoryArc();
                 //ThrowRock();
             }
         }
-    }
-
-    void OnDrawGizmos()
-    {
-        Gizmos.color = Color.blue;
-        Gizmos.DrawLine(_start, _end);
-        float count = 20.0f;
-        Vector3 lastPosition = _start;
-        for (int i = 0; i < count + 1; i++)
+        else
         {
-            Vector3 position = MathParabola.Parabola(_start, _end, h, (i / count));
-            Gizmos.color = Color.red;
-            Gizmos.DrawLine(lastPosition, position);
-            lastPosition = position;
+            if (!IsClicked)
+            {
+                CanGirlThrow = false;
+                Crosshair.SetActive(false);
+                SetTrajectoryElementsActivity(false);
+                RockSpawned = Instantiate(Rock) as GameObject;
+                IsClicked = true;
+            }
         }
+        ThrowRock();
     }
 
     private void DrawTrajectoryArc()
     {
-        float time = 0.0f;
         for (float i = 1; i <= _numberOfTrajectoryElements; i++)
         {
-            time++;
             Vector3 currentPisiton = MathParabola.Parabola(_start, _end, h, i / (float) _numberOfTrajectoryElements);
             _trajectoryElements[(int) i - 1].transform.position = currentPisiton;
             Vector3 nextPosition = MathParabola.Parabola(_start, _end, h, (i+1) / (float)_numberOfTrajectoryElements);
@@ -86,7 +94,15 @@ public class RockManager : MonoBehaviour
 
     private void ThrowRock()
     {
-        RockSpawned = Instantiate(Rock) as GameObject;
-        RockSpawned.transform.position = MathParabola.Parabola(_start, _end, h, Time.time % 1);
+        if (RockSpawned!= null)
+        {
+            _animation += Time.deltaTime;
+            _animation = _animation % 5;
+            RockSpawned.transform.position = MathParabola.Parabola(_trajectoryElements[0].transform.position, _end, h, _animation);
+        }
+        else
+        {
+            _animation = 0.0f;
+        }       
     }
 }
