@@ -8,22 +8,12 @@ public class BoxCollisionMenager : MonoBehaviour
     [SerializeField]
     private List<GameObject> colliders;
 
-    // Update is called once per frame
-    void Update()
+    public void SetCollision()
     {
-        if (gameObject.GetComponent<BoxController>().selectedStrategy == "ClimbBox")
+        foreach (GameObject g in colliders)
         {
-            foreach(GameObject g in colliders)
-            {
-                g.GetComponent<BoxCollider>().enabled = true;
-            }
-        }
-        else
-        {
-            foreach (GameObject g in colliders)
-            {
-                g.GetComponent<BoxCollider>().enabled = false;
-            }
+            g.GetComponent<BoxCollider>().enabled = true;
         }
     }
 }
+   

@@ -118,6 +118,7 @@ public class ClimbBox : MonoBehaviour, IBoxStrategy
         turnOnGravityForGirl();
         turnOnYBlockForGirl();
         isClimbing = false;
+        box.GetComponent<BoxCollisionMenager>().SetCollision();
     }
 
     private int checkBoxVariable(float boxValue, float pointValue)
