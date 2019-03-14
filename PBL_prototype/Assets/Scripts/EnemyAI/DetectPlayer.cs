@@ -52,6 +52,11 @@ public class DetectPlayer : MonoBehaviour
 
     public bool IsSeen(GameObject obj, float maxDetectionDistance)
     {
+        Hide hide = obj.GetComponent<Hide>();
+        if (hide!= null && hide.IsObjectHidden())
+        {
+            return false;
+        }
         Vector3 direction = (obj.transform.position - transform.position).normalized;
         float angle = Vector3.Angle(gameObject.transform.forward, direction);
        // Debug.Log(angle);
