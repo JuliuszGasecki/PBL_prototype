@@ -6,6 +6,6 @@ public class NoStrategy : MonoBehaviour, IBoxStrategy
 {
     public void useBox()
     {
-        Debug.Log("No strategy here :/");
+        //Debug.Log("No strategy here :/");
     }
 }

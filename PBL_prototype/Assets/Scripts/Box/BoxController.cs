@@ -41,7 +41,8 @@ public class BoxController : MonoBehaviour
                 break;
             default:
                 selectedStrategy = "null";
-                return null;
+                boxStrategy = new NoStrategy();
+                break;
 
         }
         return boxStrategy;

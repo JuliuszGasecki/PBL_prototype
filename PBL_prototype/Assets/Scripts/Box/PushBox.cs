@@ -18,6 +18,6 @@ public class PushBox : MonoBehaviour, IBoxStrategy
             box.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
 
         }
-        Debug.Log("StrategyPush");
+        //Debug.Log("StrategyPush");
     }
 }

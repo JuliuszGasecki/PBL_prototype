@@ -7,6 +7,8 @@ public class ControlByWSAD : MonoBehaviour, PlayerController
     private Rigidbody rigidbody;
     [SerializeField]
     private float speed;
+    [SerializeField]
+    private bool isBlocked = false;
 
     void Start()
     {
@@ -16,7 +18,8 @@ public class ControlByWSAD : MonoBehaviour, PlayerController
     // Update is called once per frame
     void Update()
     {
-        updateHorizontal();
+        if(!isBlocked)
+            updateHorizontal();
 
     }
     public void updateHorizontal()
@@ -26,5 +29,15 @@ public class ControlByWSAD : MonoBehaviour, PlayerController
         Vector3 newPosition = new Vector3(moveVertical, 0.0f, -moveHorizontal);
         transform.LookAt(newPosition + transform.position);
         transform.Translate(newPosition * speed * Time.deltaTime, Space.World);
+    }
+
+    public void blockControlls()
+    {
+        isBlocked = true;
+    }
+
+    public void freeControlls()
+    {
+        isBlocked = false;
     }
 }

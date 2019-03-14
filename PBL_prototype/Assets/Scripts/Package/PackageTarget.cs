@@ -10,7 +10,7 @@ public class PackageTarget : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        packageID = PackageManager.PackageManagerInstance.getLatestID() + 1;
+        packageID = PackageManager.PackageManagerInstance.getLatestID();
     }
 
     // Update is called once per frame
@@ -26,7 +26,7 @@ public class PackageTarget : MonoBehaviour
     {
         if(other.tag == "Boi" || other.tag == "Girl")
         {
-            Debug.Log("KolizjaDziała!");
+            //Debug.Log("KolizjaDziała!");
             if (Input.GetAxisRaw("Fire1") != 0 ||Input.GetAxisRaw("Fire2") != 0)
             {
                 finishMission();
@@ -39,7 +39,7 @@ public class PackageTarget : MonoBehaviour
         if(PackageManager.PackageManagerInstance.checkPackage(packageID) == true)
         {
             isPackageDelivered = true;
-            Debug.Log("Skrzynka dostarczona");
+            //Debug.Log("Skrzynka dostarczona");
         }
     }
 

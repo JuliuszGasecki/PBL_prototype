@@ -19,7 +19,12 @@ public class DetectPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-               
+        foreach (GameObject player in players)
+        {
+            if(IsSeen(player, detectionDistance)){
+                Debug.Log("Wykryto " + player.name);
+            }
+        }
     }
 
     //For debuging

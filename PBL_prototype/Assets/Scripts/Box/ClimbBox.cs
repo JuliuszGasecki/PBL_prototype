@@ -21,12 +21,13 @@ public class ClimbBox : MonoBehaviour, IBoxStrategy
 
     public void useBox()
     {
+        Debug.Log("Climb strategy");
         if (Input.GetAxisRaw("Fire1") != 0 && !isClimbing)
         {
-            
+            blockControlls();
             lowerGirlColliderPosition();
             isClimbing = true;
-            boxPositionY = (2 * box.transform.position.y) + girlGameObject.transform.lossyScale.y;
+            boxPositionY = (2 * box.transform.position.y) + 0.8f*girlGameObject.transform.lossyScale.y;
 
         }
         checkClimbingFlagAndClimb();
@@ -61,31 +62,30 @@ public class ClimbBox : MonoBehaviour, IBoxStrategy
 
     private void changeGirlPosition()
     {
-        float girlPositionY = girlGameObject.transform.position.y;
-        float girlPositionX = girlGameObject.transform.position.x;
-        float girlPositionZ = girlGameObject.transform.position.z;
+
+        Vector3 girlPosition = girlGameObject.transform.position;
         float boxPositionX = box.transform.position.x;
         float boxPositionZ = box.transform.position.z;
-        if (girlPositionY < boxPositionY)
+        if (girlPosition.y < boxPositionY)
         {
-            girlGameObject.transform.position = new Vector3(girlPositionX, girlPositionY + this.climbSpeed, girlPositionZ);
+            girlGameObject.transform.position = new Vector3(girlPosition.x, girlPosition.y + this.climbSpeed, girlPosition.z);
         }
         else
         {
-            float changedPositionX = girlPositionX;
-            float changedPositionZ = girlPositionZ;
-            if (checkAccuracyOfX(girlPositionX, boxPositionX))
+            float changedPositionX = girlPosition.x;
+            float changedPositionZ = girlPosition.z;
+            if (checkAccuracyOfX(girlPosition.x, boxPositionX))
             {
-                changedPositionX = calculateChangedGirlValue(girlPositionX, boxPositionX);
+                changedPositionX = calculateChangedGirlValue(girlPosition.x, boxPositionX);
             }
-            if (checkAccuracyOfZ(girlPositionZ, boxPositionZ))
+            if (checkAccuracyOfZ(girlPosition.z, boxPositionZ))
             {
-                changedPositionZ = calculateChangedGirlValue(girlPositionZ, boxPositionZ);
+                changedPositionZ = calculateChangedGirlValue(girlPosition.z, boxPositionZ);
             }
-            transformGirlPositionXZ(changedPositionX, girlPositionY, changedPositionZ);
+            transformGirlPositionXZ(changedPositionX, girlPosition.y, changedPositionZ);
 
         }
-        if (checkAccuracyOfXZ(girlPositionX, girlPositionZ, boxPositionX, boxPositionZ))
+        if (checkAccuracyOfXZ(girlPosition.x, girlPosition.z, boxPositionX, boxPositionZ))
         {
             endClimbing();
         }
@@ -123,6 +123,7 @@ public class ClimbBox : MonoBehaviour, IBoxStrategy
         isClimbing = false;
         increaseGirlColliderPosition();
         box.GetComponent<BoxCollisionMenager>().SetCollision();
+        freeControlls();
     }
 
     private int checkBoxVariable(float boxValue, float pointValue)
@@ -151,6 +152,16 @@ public class ClimbBox : MonoBehaviour, IBoxStrategy
             new Vector3(this.girlGameObject.GetComponent<BoxCollider>().center.x,
             this.girlGameObject.GetComponent<BoxCollider>().center.y + this.colliderYPositionChangerValue,
             this.girlGameObject.GetComponent<BoxCollider>().center.z);
+    }
+
+    private void blockControlls()
+    {
+        this.girlGameObject.GetComponent<ControlByWSAD>().blockControlls();
+    }
+
+    private void freeControlls()
+    {
+        this.girlGameObject.GetComponent<ControlByWSAD>().freeControlls();
     }
 }
     
