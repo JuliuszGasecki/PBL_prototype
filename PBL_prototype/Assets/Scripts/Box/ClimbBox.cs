@@ -8,9 +8,10 @@ public class ClimbBox : MonoBehaviour, IBoxStrategy
     private bool isClimbing = false;
     private GameObject girlGameObject = GameObject.Find("Girl");
     [SerializeField]
-    private float climbSpeed = 0.1f;
+    private float climbSpeed = 0.07f;
     private float accuracyOfClimb = 0.03f;
     private float boxPositionY;
+    private float colliderYPositionChangerValue = 0.3f;
 
     public ClimbBox(GameObject box)
     {
@@ -20,8 +21,10 @@ public class ClimbBox : MonoBehaviour, IBoxStrategy
 
     public void useBox()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetAxisRaw("Fire1") != 0 && !isClimbing)
         {
+            
+            lowerGirlColliderPosition();
             isClimbing = true;
             boxPositionY = (2 * box.transform.position.y) + girlGameObject.transform.lossyScale.y;
 
@@ -118,6 +121,7 @@ public class ClimbBox : MonoBehaviour, IBoxStrategy
         turnOnGravityForGirl();
         turnOnYBlockForGirl();
         isClimbing = false;
+        increaseGirlColliderPosition();
         box.GetComponent<BoxCollisionMenager>().SetCollision();
     }
 
@@ -133,6 +137,21 @@ public class ClimbBox : MonoBehaviour, IBoxStrategy
         }
     }
 
+    private void lowerGirlColliderPosition()
+    {
+        this.girlGameObject.GetComponent<BoxCollider>().center= 
+            new Vector3(this.girlGameObject.GetComponent<BoxCollider>().center.x,
+            this.girlGameObject.GetComponent<BoxCollider>().center.y - this.colliderYPositionChangerValue,
+            this.girlGameObject.GetComponent<BoxCollider>().center.z);
+    }
+
+    private void increaseGirlColliderPosition()
+    {
+        this.girlGameObject.GetComponent<BoxCollider>().center =
+            new Vector3(this.girlGameObject.GetComponent<BoxCollider>().center.x,
+            this.girlGameObject.GetComponent<BoxCollider>().center.y + this.colliderYPositionChangerValue,
+            this.girlGameObject.GetComponent<BoxCollider>().center.z);
+    }
 }
     
     

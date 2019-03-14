@@ -5,7 +5,7 @@ using UnityEngine;
 public class BoxController : MonoBehaviour
 {
     [SerializeField]
-    private IBoxStrategy strategy;
+    private IBoxStrategy strategy = new NoStrategy();
     public string selectedStrategy;
     private void OnTriggerEnter(Collider other)
     {
