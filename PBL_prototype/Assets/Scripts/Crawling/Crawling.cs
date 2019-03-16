@@ -8,17 +8,37 @@ public class Crawling : MonoBehaviour
     private List<GameObject> teleportPoints = new List<GameObject>();
     private GameObject girl;
     float time = 0;
+    private bool isCrawling;
     private void Start()
     {
         girl = GameObject.Find("Girl");
+        isCrawling = false;
     }
     private void Update()
     {
         int pointsValue = checkIfStarts();
         if(pointsValue != -1)
         {
-            if(Time.time - time > 1)
-                Crawle(pointsValue);
+            Crawle(pointsValue);
+            isCrawling = true;
+        }
+        if (isCrawling)
+        {
+            foreach(MeshRenderer m in girl.GetComponentsInChildren<MeshRenderer>())
+            {
+                m.enabled = false;
+            }
+        }
+        else
+        {
+            foreach (MeshRenderer m in girl.GetComponentsInChildren<MeshRenderer>())
+            {
+                m.enabled = true;
+            }
+        }
+        if(Time.time - time > 2)
+        {
+            isCrawling = false;
         }
     }
 
