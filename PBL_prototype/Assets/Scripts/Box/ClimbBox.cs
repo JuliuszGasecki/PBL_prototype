@@ -22,7 +22,7 @@ public class ClimbBox : MonoBehaviour, IBoxStrategy
     public void useBox()
     {
         Debug.Log("Climb strategy");
-        if (Input.GetAxisRaw("Fire1") != 0 && !isClimbing)
+        if (Input.GetButtonDown("Fire1") && !isClimbing)
         {
             blockControlls();
             lowerGirlColliderPosition();

@@ -13,7 +13,7 @@ public class PushBox : MonoBehaviour, IBoxStrategy
 
     public void useBox()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetButtonDown("Fire2"))
         {
             box.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
 

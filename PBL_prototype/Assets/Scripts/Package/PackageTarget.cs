@@ -27,7 +27,7 @@ public class PackageTarget : MonoBehaviour
         if(other.tag == "Boi" || other.tag == "Girl")
         {
             //Debug.Log("KolizjaDziała!");
-            if (Input.GetAxisRaw("Fire1") != 0 ||Input.GetAxisRaw("Fire2") != 0)
+            if (Input.GetButtonDown("Fire1") || Input.GetButtonDown("Fire2"))
             {
                 finishMission();
             }
