@@ -21,7 +21,7 @@ public class RockManager : MonoBehaviour
 
     private List<GameObject> _trajectoryElements = new List<GameObject>();
 
-    public float h;
+    public float Height;
 
     private GameObject RockSpawned;
     private float _animation;
@@ -84,9 +84,9 @@ public class RockManager : MonoBehaviour
     {
         for (float i = 1; i <= _numberOfTrajectoryElements; i++)
         {
-            Vector3 currentPisiton = MathParabola.Parabola(_start, _end, h, i / (float) _numberOfTrajectoryElements);
+            Vector3 currentPisiton = MathParabola.Parabola(_start, _end, Height, i / (float) _numberOfTrajectoryElements);
             _trajectoryElements[(int) i - 1].transform.position = currentPisiton;
-            Vector3 nextPosition = MathParabola.Parabola(_start, _end, h, (i+1) / (float)_numberOfTrajectoryElements);
+            Vector3 nextPosition = MathParabola.Parabola(_start, _end, Height, (i+1) / (float)_numberOfTrajectoryElements);
             float angle = Mathf.Atan2(nextPosition.y - currentPisiton.y, nextPosition.x - nextPosition.x);
             _trajectoryElements[(int)i - 1].transform.eulerAngles = new Vector3(0, (Mathf.Rad2Deg * angle) - 90, 0);
         }
@@ -96,9 +96,9 @@ public class RockManager : MonoBehaviour
     {
         if (RockSpawned!= null)
         {
-            _animation += Time.deltaTime;
+            _animation += Time.deltaTime * 1.5f;
             _animation = _animation % 5;
-            RockSpawned.transform.position = MathParabola.Parabola(_trajectoryElements[0].transform.position, _end, h, _animation);
+            RockSpawned.transform.position = MathParabola.Parabola(_trajectoryElements[0].transform.position, _end, Height, _animation);
         }
         else
         {

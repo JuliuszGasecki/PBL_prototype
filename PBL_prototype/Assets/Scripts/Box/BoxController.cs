@@ -14,7 +14,6 @@ public class BoxController : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        Debug.Log(strategy);
         strategy.useBox();
     }
 
