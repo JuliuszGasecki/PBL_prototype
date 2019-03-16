@@ -5,17 +5,28 @@ using UnityEngine;
 public class CheckTriggerToJump : MonoBehaviour
 {
     [SerializeField]
-    private bool isSpace = true;
+    private bool isSpace;
 
     private void Start()
     {
-        isSpace = true;
+        isSpace = false;
     }
-    private void OnTriggerStay(Collider other)
+
+    private void Update()
     {
-         Debug.Log("A se kolizje wykrywam ;DDDD " + other.name);
-         isSpace = false;
+        if (Physics.CheckBox(transform.position, transform.lossyScale/4))
+        {
+            Debug.Log("Nie ma miejsca checkBox");
+            isSpace = false;
+        }        
+        else
+        {
+            Debug.Log("Jest miejsca checkBox");
+            isSpace = true;
+        }
     }
+
+
 
     public bool getIsSpace()
     {

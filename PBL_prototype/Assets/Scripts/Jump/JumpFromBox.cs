@@ -14,10 +14,25 @@ public class JumpFromBox : MonoBehaviour, IJump
     private bool isTriggered = false;
     [SerializeField]
     private GameObject checker;
+    private int destroyIterator;
 
     private void Start()
     {
+        destroyIterator = 0;
         //colliderToCheckSpace = Resources.Load<GameObject>("JumpChecker");
+    }
+
+    private void Update()
+    {
+        if(checker != null && destroyIterator==60)
+        {
+            Destroy(checker);
+        }
+        destroyIterator++;
+        if(destroyIterator > 60)
+        {
+            destroyIterator = 0;
+        }
     }
 
     public void Jump()
@@ -30,7 +45,6 @@ public class JumpFromBox : MonoBehaviour, IJump
         if(other.tag == "Girl" || other.tag =="Boi")
         {
             box.GetComponent<CheckIfOnlyOneColliderIsTriggered>().addTrigger();
-            isSpaceToJump = checkJump();
             isTriggered = true;
         }
            
@@ -49,6 +63,7 @@ public class JumpFromBox : MonoBehaviour, IJump
     {
         if(other.tag == "Girl" || other.tag == "Boi")
         {
+            isSpaceToJump = checkJump();
             if (box.GetComponent<CheckIfOnlyOneColliderIsTriggered>().getAmountOfTriggers() == 1)
             {
                 if (isSpaceToJump)
@@ -88,14 +103,10 @@ public class JumpFromBox : MonoBehaviour, IJump
             this.checker = Instantiate(colliderToCheckSpace, calculateVectorBetweenBoxAndCollider(), box.transform.rotation) as GameObject;
         if (checker.GetComponent<CheckTriggerToJump>().getIsSpace())
         {
-            Debug.Log("Teren OK!");
-            //Destroy(checker);
             return true;
         }
         else
         {
-            Debug.Log("Teren nie OK!");
-            //Destroy(checker);
             return false;
         }
         
@@ -104,7 +115,7 @@ public class JumpFromBox : MonoBehaviour, IJump
 
     private Vector3 calculateVectorBetweenBoxAndCollider()
     {
-        Vector3 calculatedVector = new Vector3(2*(transform.position.x - box.transform.position.x) + transform.parent.position.x, 0.1f, 2 * ( transform.position.z - box.transform.position.z) + transform.parent.position.z);
+        Vector3 calculatedVector = new Vector3(2*(transform.position.x - box.transform.position.x) + transform.parent.position.x, 1.1f, 2 * ( transform.position.z - box.transform.position.z) + transform.parent.position.z);
         return calculatedVector;
     }
 
