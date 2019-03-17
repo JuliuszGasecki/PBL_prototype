@@ -15,6 +15,7 @@ public class FollowSpecificPath : FollowPath
     private int _countChangesNodes;
     private bool _canCount;
     private int _tempIndex;
+    private int _tempIndex2;
 
     // Start is called before the first frame update
     void Start()
@@ -60,9 +61,9 @@ public class FollowSpecificPath : FollowPath
         if (_countChangesNodes == 1 && _canCount)
         {
             pathNodes[_tempIndex].transform.position = tempNextNodeP;
-            tempCurrentNodeP = pathNodes[currentNodeIndex].transform.position;
-            pathNodes[currentNodeIndex].transform.position = tempNextNodeP;
-            pathNodes[_tempIndex].transform.position = tempCurrentNodeP;
+            var tempCurrentP = pathNodes[currentNodeIndex].transform.position;
+            pathNodes[currentNodeIndex].transform.position = tempCurrentNodeP;
+            pathNodes[_tempIndex2].transform.position = tempCurrentP;
         }
 
 
@@ -81,6 +82,7 @@ public class FollowSpecificPath : FollowPath
         {
             _lastPosition = transform.position;
             _tempIndex = currentNodeIndex;
+            _tempIndex2 = currentNodeIndex;
             SavePositions(_tempIndex);
             pathNodes[currentNodeIndex].transform.position = RockPosition;
             _countChangesNodes = 0;
