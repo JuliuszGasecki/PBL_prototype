@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChangeEnemyColor : MonoBehaviour
+public class ChangeEnemyScreamer : MonoBehaviour
 {
     private GameObject _enemy;
     private Color _originalColor;
@@ -23,8 +23,7 @@ public class ChangeEnemyColor : MonoBehaviour
         if (collision.gameObject.tag.Equals("EnemySpecific"))
         {
             _enemy = collision.gameObject;
-            _originalColor = _enemy.GetComponent<Renderer>().material.color;
-            _enemy.GetComponent<Renderer>().material.color = Color.magenta;
+            _enemy.transform.GetChild(0).gameObject.SetActive(true);
         }
     }
 
@@ -32,7 +31,7 @@ public class ChangeEnemyColor : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("EnemySpecific"))
         {
-            _enemy.GetComponent<Renderer>().material.color = _originalColor;
+            _enemy.transform.GetChild(0).gameObject.SetActive(false);
         }
     }
 }

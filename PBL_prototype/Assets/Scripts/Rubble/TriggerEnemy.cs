@@ -25,6 +25,7 @@ public class TriggerEnemy : MonoBehaviour
         {
             var Enemy = collision.gameObject.GetComponent<FollowSpecificPath>();
             Enemy.IsTrigger = true;
+            collision.gameObject.transform.GetChild(0).gameObject.SetActive(false);
             Enemy.RockPosition = transform.position;
             Destroy(this.gameObject);
         }

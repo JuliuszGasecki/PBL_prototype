@@ -13,13 +13,13 @@ public class FollowSpecificPath : FollowPath
     private Transform tempNextNodeP;
     private Transform tempLastNodeP;
     private int _countChangesNodes;
-
+    private bool _canCount;
     private int _tempIndex;
 
     // Start is called before the first frame update
     void Start()
     {
-        _countChangesNodes = 3;
+        _countChangesNodes = 0;
         currentNodeIndex = 0;
     }
 
@@ -63,7 +63,13 @@ public class FollowSpecificPath : FollowPath
             _tempIndex = currentNodeIndex;
         }
 
-        _countChangesNodes++;
+        if (_countChangesNodes == 2)   
+        {         
+            _canCount = false;
+        }
+
+        if (_canCount)
+            _countChangesNodes++;
     }
     void ChangeDestiny()
     {
@@ -74,6 +80,7 @@ public class FollowSpecificPath : FollowPath
             SavePositions(_tempIndex);
             pathNodes[currentNodeIndex].transform.position = RockPosition;
             _countChangesNodes = 0;
+            _canCount = true;
             IsTrigger = false;
         }
     }
