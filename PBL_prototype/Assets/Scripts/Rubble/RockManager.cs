@@ -99,6 +99,9 @@ public class RockManager : MonoBehaviour
             _animation += Time.deltaTime * 2.0f;
             _animation = _animation % 5;
             RockSpawned.transform.position = MathParabola.Parabola(_trajectoryElements[0].transform.position, _end, Height, _animation);
+            if (RockSpawned.transform.position.y < -1)
+                RockSpawned.transform.position = new Vector3(RockSpawned.transform.position.x, 0.0f,
+                    RockSpawned.transform.position.z);
         }
         else
         {
