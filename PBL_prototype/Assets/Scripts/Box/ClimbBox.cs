@@ -8,7 +8,7 @@ public class ClimbBox : MonoBehaviour, IBoxStrategy
     private bool isClimbing = false;
     private GameObject girlGameObject = GameObject.Find("Girl");
     [SerializeField]
-    private float climbSpeed = 0.07f;
+    private float climbSpeed = 0.06f;
     private float accuracyOfClimb = 0.03f;
     private float boxPositionY;
     private float colliderYPositionChangerValue = 0.3f;
@@ -103,17 +103,17 @@ public class ClimbBox : MonoBehaviour, IBoxStrategy
 
     private bool checkAccuracyOfX(float girlX, float boxX)
     {
-        return Mathf.Abs(Mathf.Abs(girlX) - Mathf.Abs(boxX)) > accuracyOfClimb;
+        return Mathf.Abs(girlX - boxX) >= accuracyOfClimb;
     }
 
     private bool checkAccuracyOfZ(float girlZ, float boxZ)
     {
-        return Mathf.Abs(Mathf.Abs(girlZ) - Mathf.Abs(boxZ)) > accuracyOfClimb;
+        return Mathf.Abs(girlZ - boxZ) >= accuracyOfClimb;
     }
 
     private bool checkAccuracyOfXZ(float girlX, float girlZ, float boxX, float boxZ)
     {
-        return Mathf.Abs(Mathf.Abs(girlX) - Mathf.Abs(boxX)) <= accuracyOfClimb && Mathf.Abs(Mathf.Abs(girlZ) - Mathf.Abs(boxZ)) <= accuracyOfClimb;
+        return Mathf.Abs(girlX - boxX) <= accuracyOfClimb && Mathf.Abs(girlZ - boxZ) <= accuracyOfClimb;
     }
 
     private void endClimbing()
