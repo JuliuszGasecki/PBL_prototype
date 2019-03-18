@@ -15,5 +15,13 @@ public class BoxCollisionMenager : MonoBehaviour
             g.GetComponent<BoxCollider>().enabled = true;
         }
     }
+
+    public void DisableCollisions()
+    {
+        foreach (GameObject g in colliders)
+        {
+            g.GetComponent<BoxCollider>().enabled = false;
+        }
+    }
 }
    

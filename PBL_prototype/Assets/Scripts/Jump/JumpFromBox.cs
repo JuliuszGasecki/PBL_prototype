@@ -14,30 +14,41 @@ public class JumpFromBox : MonoBehaviour, IJump
     private bool isTriggered = false;
     [SerializeField]
     private GameObject checker;
-    private int destroyIterator;
+    private GameObject girl;
+    private float time;
+    private Vector3 lastPosition;
 
     private void Start()
     {
-        destroyIterator = 0;
+        girl = GameObject.Find("Girl");
+        time = 0;
         //colliderToCheckSpace = Resources.Load<GameObject>("JumpChecker");
     }
 
     private void Update()
     {
-        if(checker != null && destroyIterator==60)
+        if(checker != null && lastPosition != transform.position)
         {
             Destroy(checker);
         }
-        destroyIterator++;
-        if(destroyIterator > 60)
+        if (Time.time - time > 0.5 && time != 0)
         {
-            destroyIterator = 0;
+            this.girl.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionY;
+            this.girl.GetComponent<ControlByWSAD>().freeControlls();
+            time = 0;
         }
+        lastPosition = this.transform.position;
     }
 
     public void Jump()
     {
-        
+        this.girl.GetComponent<ControlByWSAD>().blockControlls();
+        this.box.GetComponent<BoxCollisionMenager>().DisableCollisions();
+        Vector3 calculatedVector = calculateVectorBetweenBoxAndCollider();
+        this.girl.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
+        this.girl.transform.position = calculatedVector;
+        this.box.GetComponent<CheckIfOnlyOneColliderIsTriggered>().setZeroTriggers();
+        time = Time.time;
     }
 
     private void OnTriggerEnter(Collider other)

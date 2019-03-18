@@ -22,4 +22,9 @@ public class CheckIfOnlyOneColliderIsTriggered : MonoBehaviour
         return amountOfTriggers;
     }
 
+    public void setZeroTriggers()
+    {
+        amountOfTriggers = 0;
+    }
+
 }
