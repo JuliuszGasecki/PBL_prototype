@@ -5,13 +5,13 @@ using UnityEngine;
 public class FollowSpecificPath : FollowPath
 {
     [SerializeField] private List<GameObject> pathNodes;
-    private List<GameObject> pathNodesTemp;
+    public GameObject Point;
     private int currentNodeIndex;
     public bool IsTrigger;
     private Vector3 _lastPosition;
     public Vector3 RockPosition;
-    private Vector3 tempCurrentNodeP;
-    private Vector3 tempNextNodeP;
+    private GameObject _rockObject;
+    private GameObject _lastPositionObject;
     private int _countChangesNodes;
     private bool _canCount;
     private int _tempIndex;
@@ -21,7 +21,6 @@ public class FollowSpecificPath : FollowPath
     void Start()
     {
         currentNodeIndex = 0;
-        //pathNodesTemp = new List<GameObject>(pathNodes);
     }
 
     // Update is called once per frame
@@ -34,12 +33,12 @@ public class FollowSpecificPath : FollowPath
             if (currentNodeIndex < pathNodes.Count - 1)
             {
                 currentNodeIndex++;
-                ChangeNextPoint();
+                RemoveNodes();
             }
             else
             {
                 currentNodeIndex = 0;
-                ChangeNextPoint();
+                RemoveNodes();
             }
         }
 
@@ -49,23 +48,16 @@ public class FollowSpecificPath : FollowPath
         this.Move(move);
     }
 
-    void ChangeNextPoint()
+    void RemoveNodes()
     {
-        if (_countChangesNodes == 0 && _canCount)
-        {
-            pathNodes[_tempIndex].transform.position = tempCurrentNodeP;
-            pathNodes[currentNodeIndex].transform.position = _lastPosition;
-            _tempIndex = currentNodeIndex;
-        }
-
         if (_countChangesNodes == 1 && _canCount)
         {
-            pathNodes[_tempIndex].transform.position = tempNextNodeP;
-            var tempCurrentP = pathNodes[currentNodeIndex].transform.position;
-            pathNodes[currentNodeIndex].transform.position = tempCurrentNodeP;
-            pathNodes[_tempIndex2].transform.position = tempCurrentP;
+            pathNodes.Remove(_rockObject);
+            pathNodes.Remove(_lastPositionObject);
+            Destroy(_rockObject);
+            Destroy(_lastPositionObject);
+            currentNodeIndex = _tempIndex;
         }
-
 
         if (_countChangesNodes == 2)
         {
@@ -82,22 +74,29 @@ public class FollowSpecificPath : FollowPath
         {
             _lastPosition = transform.position;
             _tempIndex = currentNodeIndex;
-            _tempIndex2 = currentNodeIndex;
-            SavePositions(_tempIndex);
-            pathNodes[currentNodeIndex].transform.position = RockPosition;
+            CreateNewNodes();
+            InsertNewNodes();
             _countChangesNodes = 0;
             _canCount = true;
             IsTrigger = false;
         }
     }
 
-    void SavePositions(int index)
+    void CreateNewNodes()
     {
-        tempCurrentNodeP = pathNodes[index].transform.position;
-        if (index + 1 > pathNodes.Count - 1)
-        {
-            index = 0;
-        }
-        tempNextNodeP = pathNodes[index + 1].transform.position;
+        _rockObject = Instantiate(Point) as GameObject;
+        _rockObject.transform.position = RockPosition;
+        _lastPositionObject = Instantiate(Point) as GameObject;
+        _lastPositionObject.transform.position = _lastPosition;
+    }
+
+    void InsertNewNodes()
+    {
+        pathNodes.Insert(currentNodeIndex, _rockObject);
+        int tempIndex = currentNodeIndex;
+        tempIndex++;
+        if (tempIndex > pathNodes.Count - 1)
+            tempIndex = 0;
+        pathNodes.Insert(tempIndex, _lastPositionObject);
     }
 }
