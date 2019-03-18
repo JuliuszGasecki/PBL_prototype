@@ -5,32 +5,29 @@ using UnityEngine;
 public class Hide : MonoBehaviour
 {
     private bool isHidden = false;
+    [SerializeField]
+    private GameObject model;
+    
 
     public void HideObject()
     {
         isHidden = true;
         gameObject.GetComponent<PlayerController>().blockControlls();
-        //SetAlphaToMaterial(0.5f);
         Debug.Log(gameObject.name + " jest ukryty");
+        model.GetComponent<HideMaterialChanger>().ChangeMaterialOnHide();
     }
 
     public void UnhideObject()
     {
         isHidden = false;
         gameObject.GetComponent<PlayerController>().freeControlls();
-        //SetAlphaToMaterial(1.0f);
         Debug.Log(gameObject.name + " już NIE jest ukryty");
+        model.GetComponent<HideMaterialChanger>().ChangeMaterialOnUnhide();
     }
 
     public bool IsObjectHidden()
     {
         return isHidden;
     }
-
-    private void SetAlphaToMaterial(float alpha)
-    {
-        Color color = gameObject.GetComponent<Renderer>().material.color;
-        color.a = alpha;
-        gameObject.GetComponent<Renderer>().material.SetColor("_Color", color);
-    }
+   
 }
