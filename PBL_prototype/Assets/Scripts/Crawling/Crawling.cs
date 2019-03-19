@@ -6,6 +6,8 @@ public class Crawling : MonoBehaviour
 {
     [SerializeField]
     private List<GameObject> teleportPoints = new List<GameObject>();
+    [SerializeField]
+    private float crawlingTime = 1.5f;
     private GameObject girl;
     float time = 0;
     private bool isCrawling;
@@ -17,13 +19,14 @@ public class Crawling : MonoBehaviour
     private void Update()
     {
         int pointsValue = checkIfStarts();
-        if(pointsValue != -1)
+        if(pointsValue != -1 && !isCrawling)
         {
             Crawle(pointsValue);
             isCrawling = true;
         }
         if (isCrawling)
         {
+            girl.GetComponent<ControlByWSAD>().blockControlls();
             foreach(MeshRenderer m in girl.GetComponentsInChildren<MeshRenderer>())
             {
                 m.enabled = false;
@@ -36,8 +39,9 @@ public class Crawling : MonoBehaviour
                 m.enabled = true;
             }
         }
-        if(Time.time - time > 2)
+        if(Time.time - time > crawlingTime && isCrawling)
         {
+            girl.GetComponent<ControlByWSAD>().freeControlls();
             isCrawling = false;
         }
     }

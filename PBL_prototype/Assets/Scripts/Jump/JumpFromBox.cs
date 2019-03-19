@@ -14,6 +14,7 @@ public class JumpFromBox : MonoBehaviour, IJump
     private bool isTriggered = false;
     [SerializeField]
     private GameObject checker;
+    [SerializeField]
     private GameObject girl;
     private float time;
     private Vector3 lastPosition;
@@ -33,8 +34,8 @@ public class JumpFromBox : MonoBehaviour, IJump
         }
         if (Time.time - time > 0.5 && time != 0)
         {
-            this.girl.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionY;
-            this.girl.GetComponent<ControlByWSAD>().freeControlls();
+            girl.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionY;
+            girl.GetComponent<ControlByWSAD>().freeControlls();
             time = 0;
         }
         lastPosition = this.transform.position;
@@ -42,12 +43,13 @@ public class JumpFromBox : MonoBehaviour, IJump
 
     public void Jump()
     {
-        this.girl.GetComponent<ControlByWSAD>().blockControlls();
-        this.box.GetComponent<BoxCollisionMenager>().DisableCollisions();
+        Debug.Log("Free Sex");
+        girl.GetComponent<ControlByWSAD>().blockControlls();
+        box.GetComponent<BoxCollisionMenager>().DisableCollisions();
         Vector3 calculatedVector = calculateVectorBetweenBoxAndCollider();
-        this.girl.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
-        this.girl.transform.position = calculatedVector;
-        this.box.GetComponent<CheckIfOnlyOneColliderIsTriggered>().setZeroTriggers();
+        girl.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
+        girl.transform.position = calculatedVector;
+        box.GetComponent<CheckIfOnlyOneColliderIsTriggered>().setZeroTriggers();
         time = Time.time;
     }
 
@@ -82,6 +84,8 @@ public class JumpFromBox : MonoBehaviour, IJump
                     Debug.Log("jestem gotowa do skoku");
                     if(Input.GetAxisRaw("Fire1")!=0 || Input.GetAxisRaw("Fire2") != 0)
                     {
+                        Debug.Log("Skaczę! gotowa do skoku");
+                        
                         Jump();
                     }
                 }

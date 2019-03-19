@@ -8,10 +8,11 @@ public class ControlByWSAD : MonoBehaviour, PlayerController
     [SerializeField]
     private float speed;
     [SerializeField]
-    private bool isBlocked = false;
+    private bool isBlocked;
 
     void Start()
     {
+        isBlocked = false;
         rigidbody = GetComponent<Rigidbody>();
     }
 
@@ -33,11 +34,13 @@ public class ControlByWSAD : MonoBehaviour, PlayerController
 
     public void blockControlls()
     {
+        Debug.Log("Blokuje chodzenie lochy");
         isBlocked = true;
     }
 
     public void freeControlls()
     {
+        Debug.Log("Uwalniam chodzenie lochy");
         isBlocked = false;
     }
 }

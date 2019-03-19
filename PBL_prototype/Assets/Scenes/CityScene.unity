@@ -1746,6 +1746,7 @@ MonoBehaviour:
   teleportPoints:
   - {fileID: 1007375641}
   - {fileID: 114747474}
+  crawlingTime: 1.5
 --- !u!65 &604952386
 BoxCollider:
   m_ObjectHideFlags: 0

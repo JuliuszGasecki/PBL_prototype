@@ -10,8 +10,9 @@ public class InformCrawling : MonoBehaviour
     {
         if(other.tag == "Girl")
         {
-            if (Input.GetButtonDown("Fire1"))
+            if (Input.GetButtonDown("Fire1") && !isStartPoint)
             {
+                Debug.Log("Klikłem e XD");
                 isStartPoint = true;
             }
         }
