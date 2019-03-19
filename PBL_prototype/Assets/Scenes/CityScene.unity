@@ -701,6 +701,7 @@ MonoBehaviour:
   isSpaceToJump: 0
   isTriggered: 0
   checker: {fileID: 0}
+  girl: {fileID: 0}
 --- !u!114 &216164715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2152,6 +2153,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   model: {fileID: 1920532067}
+--- !u!114 &761562515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 761562508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 461db72dd8f7e4f40be3f781c506fa16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Rock: {fileID: 8352327196060747876, guid: dd6dee4c64f2c8548a739e1d9c6f30e0, type: 3}
+  TrajectoryElement: {fileID: 4999931923131152445, guid: 591100d9cd4a76943b51721155b78a1d,
+    type: 3}
+  Crosshair: {fileID: 117534844}
+  Height: 1
 --- !u!1 &802497687
 GameObject:
   m_ObjectHideFlags: 0
@@ -2202,6 +2220,7 @@ MonoBehaviour:
   isSpaceToJump: 0
   isTriggered: 0
   checker: {fileID: 0}
+  girl: {fileID: 0}
 --- !u!65 &802497690
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2561,6 +2580,7 @@ MonoBehaviour:
   isSpaceToJump: 0
   isTriggered: 0
   checker: {fileID: 0}
+  girl: {fileID: 0}
 --- !u!114 &903126032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3576,6 +3596,7 @@ MonoBehaviour:
   isSpaceToJump: 0
   isTriggered: 0
   checker: {fileID: 0}
+  girl: {fileID: 0}
 --- !u!114 &1238200452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3639,6 +3660,7 @@ MonoBehaviour:
   isSpaceToJump: 0
   isTriggered: 0
   checker: {fileID: 0}
+  girl: {fileID: 0}
 --- !u!65 &1246531828
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5083,6 +5105,7 @@ MonoBehaviour:
   isSpaceToJump: 0
   isTriggered: 0
   checker: {fileID: 0}
+  girl: {fileID: 0}
 --- !u!65 &1792930458
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5146,6 +5169,7 @@ MonoBehaviour:
   isSpaceToJump: 0
   isTriggered: 0
   checker: {fileID: 0}
+  girl: {fileID: 0}
 --- !u!65 &1806658749
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5336,6 +5360,7 @@ MonoBehaviour:
   isSpaceToJump: 0
   isTriggered: 0
   checker: {fileID: 0}
+  girl: {fileID: 0}
 --- !u!114 &1819287799
 MonoBehaviour:
   m_ObjectHideFlags: 0

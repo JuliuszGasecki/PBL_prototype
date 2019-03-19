@@ -26,9 +26,13 @@ public class RockManager : MonoBehaviour
     private GameObject RockSpawned;
     private float _animation;
     private bool IsClicked = true;
+    GameObject Boy;
+    GameObject Girl;
     // Start is called before the first frame update
     void Start()
     {
+        Boy = GameObject.Find("Boi");
+        Girl = GameObject.Find("Girl");
         for (int i = 0; i < _numberOfTrajectoryElements; i++)
             _trajectoryElements.Add(Instantiate(TrajectoryElement) as GameObject);
         SetTrajectoryElementsActivity(false);
@@ -52,11 +56,12 @@ public class RockManager : MonoBehaviour
     {
         if (Input.GetMouseButton(0))
         {
-            if (CanGirlThrow)
+            if (CanGirlThrow || CanBoyThrow)
             {
+                SetScriptActive();
                 _start = transform.position;
                 _end = Crosshair.transform.position;
-                if (IsClicked)
+                if (IsClicked && this.GetComponent<RockManager>().isActiveAndEnabled)
                 {
                     Crosshair.SetActive(true);
                     SetTrajectoryElementsActivity(true);
@@ -71,6 +76,7 @@ public class RockManager : MonoBehaviour
             if (!IsClicked)
             {
                 CanGirlThrow = false;
+                CanBoyThrow = false;
                 Crosshair.SetActive(false);
                 SetTrajectoryElementsActivity(false);
                 RockSpawned = Instantiate(Rock) as GameObject;
@@ -80,6 +86,19 @@ public class RockManager : MonoBehaviour
         ThrowRock();
     }
 
+    private void SetScriptActive()
+    {
+        if (CanGirlThrow)
+        {
+            Boy.GetComponent<RockManager>().enabled = false;
+            Girl.GetComponent<RockManager>().enabled = true;
+        }
+        if (CanBoyThrow)
+        {
+            Boy.GetComponent<RockManager>().enabled = true;
+            Girl.GetComponent<RockManager>().enabled = false;
+        }
+    }
     private void DrawTrajectoryArc()
     {
         for (float i = 1; i <= _numberOfTrajectoryElements; i++)
