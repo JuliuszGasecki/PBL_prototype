@@ -23,11 +23,11 @@ public class RubbleManager : MonoBehaviour
             if (tag.Equals("Girl"))
             {
                 RockManager.CanGirlThrow = true;
-                RockManager.CanBoyThrow = false;
+               // RockManager.CanBoyThrow = false;
             }
             else if (tag.Equals("Boi"))
             {
-                RockManager.CanGirlThrow = false;
+                //RockManager.CanGirlThrow = false;
                 RockManager.CanBoyThrow = true;
             }
         }
