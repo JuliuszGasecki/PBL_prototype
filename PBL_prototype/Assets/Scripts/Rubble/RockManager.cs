@@ -52,6 +52,24 @@ public class RockManager : MonoBehaviour
         }
     }
 
+    private void SetFlags(params bool[] paramList)
+    {
+        int amount = paramList.Length;
+        if (amount == 3)
+        {
+            Crosshair.SetActive(paramList[0]);
+            SetTrajectoryElementsActivity(paramList[1]);
+            IsClicked = paramList[2];
+        }
+        else if (amount == 5)
+        {
+            Crosshair.SetActive(paramList[0]);
+            SetTrajectoryElementsActivity(paramList[1]);
+            IsClicked = paramList[2];
+            CanGirlThrow = paramList[3];
+            CanBoyThrow = paramList[4];
+        }
+    }
     private void Aim()
     {
         if (Input.GetMouseButton(0))
@@ -63,9 +81,7 @@ public class RockManager : MonoBehaviour
                 _end = Crosshair.transform.position;
                 if (IsClicked && this.GetComponent<RockManager>().isActiveAndEnabled)
                 {
-                    Crosshair.SetActive(true);
-                    SetTrajectoryElementsActivity(true);
-                    IsClicked = false;
+                    SetFlags(true, true, false);
                 }
                 DrawTrajectoryArc();
                 //ThrowRock();
@@ -75,12 +91,8 @@ public class RockManager : MonoBehaviour
         {
             if (!IsClicked)
             {
-                CanGirlThrow = false;
-                CanBoyThrow = false;
-                Crosshair.SetActive(false);
-                SetTrajectoryElementsActivity(false);
+                SetFlags(false, false, true, false, false);
                 RockSpawned = Instantiate(Rock) as GameObject;
-                IsClicked = true;
             }
         }
         ThrowRock();

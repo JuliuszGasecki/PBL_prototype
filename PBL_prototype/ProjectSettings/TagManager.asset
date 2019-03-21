@@ -8,6 +8,8 @@ TagManager:
   - Girl
   - Enemy
   - EnemySpecific
+  - EnemyIcon
+  - EnemyLPIcon
   layers:
   - Default
   - TransparentFX
@@ -20,7 +22,7 @@ TagManager:
   - PostProcessing
   - EnvironmentLayer
   - Minimap
-  - 
+  - Hiden
   - 
   - 
   - 

@@ -19,7 +19,7 @@ public class TriggerEnemy : MonoBehaviour
     {
         DestroyObjectDelayed();
     }
-    void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.tag.Equals("EnemySpecific"))
         {

@@ -15,7 +15,7 @@ public class RubbleManager : MonoBehaviour
     }
 
 
-    void OnCollisionStay(Collision collision)
+    void OnTriggerStay(Collider collision)
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
