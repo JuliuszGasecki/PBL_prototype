@@ -13,6 +13,12 @@ public class ShowMinimap : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        SetMapActivity();
+    }
+
+    void SetMapActivity()
+    {
+
         if (Input.GetKeyDown(KeyCode.M))
         {
             Map.SetActive(true);

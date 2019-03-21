@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - EnemySpecific
   - EnemyIcon
+  - EnemyLPIcon
   layers:
   - Default
   - TransparentFX
