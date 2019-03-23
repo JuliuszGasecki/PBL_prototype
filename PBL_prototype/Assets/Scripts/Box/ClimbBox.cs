@@ -24,6 +24,7 @@ public class ClimbBox : MonoBehaviour, IBoxStrategy
         Debug.Log("Climb strategy");
         if (Input.GetButtonDown("Fire1") && !isClimbing)
         {
+            box.GetComponent<BoxCollisionMenager>().DisableCollisions();
             blockControlls();
             lowerGirlColliderPosition();
             isClimbing = true;

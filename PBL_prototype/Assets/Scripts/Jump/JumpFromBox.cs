@@ -36,6 +36,7 @@ public class JumpFromBox : MonoBehaviour, IJump
         {
             girl.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionY;
             girl.GetComponent<ControlByWSAD>().freeControlls();
+            box.GetComponent<BoxCollisionMenager>().SetCollision();
             time = 0;
         }
         lastPosition = this.transform.position;

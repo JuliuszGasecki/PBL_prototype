@@ -10,6 +10,7 @@ TagManager:
   - EnemySpecific
   - EnemyIcon
   - EnemyLPIcon
+  - FallCollider
   layers:
   - Default
   - TransparentFX
