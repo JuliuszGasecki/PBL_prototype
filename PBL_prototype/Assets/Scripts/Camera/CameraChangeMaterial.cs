@@ -37,10 +37,10 @@ public class CameraChangeMaterial : MonoBehaviour
         boizHits = Physics.RaycastAll(heroes[1].position, transform.position - heroes[1].position);
 
         {
-            girlsHits1 = Physics.RaycastAll(new Vector3(heroes[0].position.x, heroes[0].position.y, heroes[0].position.z - 2f),  transform.position - heroes[0].position);
-            girlsHits2 = Physics.RaycastAll(new Vector3(heroes[0].position.x, heroes[0].position.y, heroes[0].position.z + 2f),  transform.position - heroes[0].position);
-            boizHits1 = Physics.RaycastAll(new Vector3(heroes[0].position.x, heroes[1].position.y, heroes[1].position.z - 2f),  transform.position - heroes[1].position);
-            boizHits2 = Physics.RaycastAll(new Vector3(heroes[0].position.x, heroes[1].position.y, heroes[1].position.z + 2f),  transform.position - heroes[1].position);
+            girlsHits1 = Physics.RaycastAll(new Vector3(heroes[0].position.x, heroes[0].position.y, heroes[0].position.z - 1f),  transform.position - heroes[0].position);
+            girlsHits2 = Physics.RaycastAll(new Vector3(heroes[0].position.x, heroes[0].position.y, heroes[0].position.z + 1f),  transform.position - heroes[0].position);
+            boizHits1 = Physics.RaycastAll(new Vector3(heroes[0].position.x, heroes[1].position.y, heroes[1].position.z - 1f),  transform.position - heroes[1].position);
+            boizHits2 = Physics.RaycastAll(new Vector3(heroes[0].position.x, heroes[1].position.y, heroes[1].position.z + 1f),  transform.position - heroes[1].position);
         }
         setOldMeterialToObjects(girlsHits);
         setOldMeterialToObjects(girlsHits1);
