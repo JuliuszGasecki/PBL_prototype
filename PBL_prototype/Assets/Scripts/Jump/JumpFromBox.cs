@@ -16,12 +16,16 @@ public class JumpFromBox : MonoBehaviour, IJump
     private GameObject checker;
     [SerializeField]
     private GameObject girl;
+    private GameObject boi;
     private float time;
     private Vector3 lastPosition;
+
+    private bool isboi;
 
     private void Start()
     {
         girl = GameObject.Find("Girl");
+        boi = GameObject.Find("Boi");
         time = 0;
         //colliderToCheckSpace = Resources.Load<GameObject>("JumpChecker");
     }
@@ -34,8 +38,16 @@ public class JumpFromBox : MonoBehaviour, IJump
         }
         if (Time.time - time > 0.5 && time != 0)
         {
-            girl.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionY;
-            girl.GetComponent<ControlByWSAD>().freeControlls();
+            if(!isboi)
+            {
+                girl.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionY;
+                girl.GetComponent<ControlByWSAD>().freeControlls();
+            }
+            else
+            {
+                boi.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionY;
+                boi.GetComponent<ControlByNUM>().freeControlls();
+            }
             box.GetComponent<BoxCollisionMenager>().SetCollision();
             time = 0;
         }
@@ -44,14 +56,28 @@ public class JumpFromBox : MonoBehaviour, IJump
 
     public void Jump()
     {
-        Debug.Log("Free Sex");
-        girl.GetComponent<ControlByWSAD>().blockControlls();
-        box.GetComponent<BoxCollisionMenager>().DisableCollisions();
-        Vector3 calculatedVector = calculateVectorBetweenBoxAndCollider();
-        girl.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
-        girl.transform.position = calculatedVector;
-        box.GetComponent<CheckIfOnlyOneColliderIsTriggered>().setZeroTriggers();
-        time = Time.time;
+        if (!isboi)
+        {
+            Debug.Log("Free Sex");
+            girl.GetComponent<ControlByWSAD>().blockControlls();
+            box.GetComponent<BoxCollisionMenager>().DisableCollisions();
+            Vector3 calculatedVector = calculateVectorBetweenBoxAndCollider();
+            girl.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
+            girl.transform.position = calculatedVector;
+            box.GetComponent<CheckIfOnlyOneColliderIsTriggered>().setZeroTriggers();
+            time = Time.time;
+        }
+        else
+        {
+            Debug.Log("Free Sex");
+            boi.GetComponent<ControlByNUM>().blockControlls();
+            box.GetComponent<BoxCollisionMenager>().DisableCollisions();
+            Vector3 calculatedVector = calculateVectorBetweenBoxAndCollider();
+            boi.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
+            boi.transform.position = calculatedVector;
+            box.GetComponent<CheckIfOnlyOneColliderIsTriggered>().setZeroTriggers();
+            time = Time.time;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -77,6 +103,14 @@ public class JumpFromBox : MonoBehaviour, IJump
     {
         if(other.tag == "Girl" || other.tag == "Boi")
         {
+            if(other.tag == "Boi")
+            {
+                isboi = true;
+            }
+            else
+            {
+                isboi = false;
+            }
             isSpaceToJump = checkJump();
             if (box.GetComponent<CheckIfOnlyOneColliderIsTriggered>().getAmountOfTriggers() == 1)
             {

@@ -5,9 +5,16 @@ using UnityEngine;
 public class ShowEnemies : MonoBehaviour
 {
     private bool _isHacked;
+<<<<<<< HEAD
     private GameObject[]_enemiesIcons;
     private static GameObject[] _enemiesLastPositionIcons;
     private static bool _isCreated;
+=======
+    private static GameObject[]_enemiesIcons;
+    private static GameObject[] _enemiesLastPositionIcons;
+    private static bool _isCreated;
+
+>>>>>>> master
     public GameObject LastPositionIcon;
     // Start is called before the first frame update
     void Start()
@@ -38,7 +45,10 @@ public class ShowEnemies : MonoBehaviour
             {
                 GameObject lp = Instantiate(LastPositionIcon) as GameObject;
             }
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
             _enemiesLastPositionIcons = GameObject.FindGameObjectsWithTag("EnemyLPIcon");
             _isCreated = true;
         }
@@ -59,7 +69,7 @@ public class ShowEnemies : MonoBehaviour
     void OnTriggerStay(Collider collision)
     {
         string tag = collision.gameObject.tag;
-        if (Input.GetKeyDown(KeyCode.E) && tag.Equals("Girl") && !_isHacked)
+        if (Input.GetButton("Fire1") && tag.Equals("Girl") && !_isHacked)
         {
             _isHacked = true;
             SetLayer("Hiden", _enemiesLastPositionIcons);

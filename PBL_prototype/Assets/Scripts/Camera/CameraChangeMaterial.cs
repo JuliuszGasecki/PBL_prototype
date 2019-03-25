@@ -25,24 +25,43 @@ public class CameraChangeMaterial : MonoBehaviour
     private void CheckRays()
     {
         RaycastHit[] girlsHits;
+        RaycastHit[] girlsHits1;
+        RaycastHit[] girlsHits2;
         RaycastHit[] boizHits;
-        Debug.DrawLine(heroes[0].position, transform.position, Color.blue, 0.1f);
-        Debug.DrawLine(heroes[1].position, transform.position, Color.blue, 0.1f);
-        girlsHits = Physics.RaycastAll(heroes[0].position, transform.position);
-        boizHits = Physics.RaycastAll(heroes[1].position, transform.position);
-        setOldMeterialToObjects(girlsHits);
-        setOldMeterialToObjects(boizHits);
-        foreach(RaycastHit hit in girlsHits)
+        RaycastHit[] boizHits1;
+        RaycastHit[] boizHits2;
+        Debug.DrawRay(heroes[0].position, transform.position - heroes[0].position);
+        Debug.DrawRay(heroes[1].position, transform.position - heroes[1].position);
+
+        girlsHits = Physics.RaycastAll(heroes[0].position, transform.position - heroes[0].position);
+        boizHits = Physics.RaycastAll(heroes[1].position, transform.position - heroes[1].position);
+
         {
-        if (hit.transform.GetComponent<MaterialChanger>() != null)
-            {
-                hit.transform.GetComponent<MaterialChanger>().UseNewMaterial(transparentMaterial);
-                detectedObjects.Add(hit);
-            }
-
+            girlsHits1 = Physics.RaycastAll(new Vector3(heroes[0].position.x, heroes[0].position.y, heroes[0].position.z - 2f),  transform.position - heroes[0].position);
+            girlsHits2 = Physics.RaycastAll(new Vector3(heroes[0].position.x, heroes[0].position.y, heroes[0].position.z + 2f),  transform.position - heroes[0].position);
+            boizHits1 = Physics.RaycastAll(new Vector3(heroes[0].position.x, heroes[1].position.y, heroes[1].position.z - 2f),  transform.position - heroes[1].position);
+            boizHits2 = Physics.RaycastAll(new Vector3(heroes[0].position.x, heroes[1].position.y, heroes[1].position.z + 2f),  transform.position - heroes[1].position);
         }
+        setOldMeterialToObjects(girlsHits);
+        setOldMeterialToObjects(girlsHits1);
+        setOldMeterialToObjects(girlsHits2);
+        setOldMeterialToObjects(boizHits);
+        setOldMeterialToObjects(boizHits1);
+        setOldMeterialToObjects(boizHits2);
 
-        foreach (RaycastHit hit in boizHits)
+        checkRaycastHit(girlsHits);
+        checkRaycastHit(girlsHits1);
+        checkRaycastHit(girlsHits2);
+        checkRaycastHit(boizHits);
+        checkRaycastHit(boizHits1);
+        checkRaycastHit(boizHits2);
+        
+
+    }
+
+    private void checkRaycastHit(RaycastHit[] Marek)
+    {
+        foreach (RaycastHit hit in Marek)
         {
             if (hit.transform.GetComponent<MaterialChanger>() != null)
             {
@@ -51,7 +70,6 @@ public class CameraChangeMaterial : MonoBehaviour
             }
 
         }
-
     }
 
     private void setOldMeterialToObjects(RaycastHit[] hits)
