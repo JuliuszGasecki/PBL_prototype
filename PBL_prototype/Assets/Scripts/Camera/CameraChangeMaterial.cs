@@ -26,10 +26,11 @@ public class CameraChangeMaterial : MonoBehaviour
     {
         RaycastHit[] girlsHits;
         RaycastHit[] boizHits;
-        Debug.DrawLine(heroes[0].position, transform.position, Color.blue, 0.1f);
-        Debug.DrawLine(heroes[1].position, transform.position, Color.blue, 0.1f);
-        girlsHits = Physics.RaycastAll(heroes[0].position, transform.position);
-        boizHits = Physics.RaycastAll(heroes[1].position, transform.position);
+        Debug.DrawRay(heroes[0].position, transform.position - heroes[0].position);
+        Debug.DrawRay(heroes[1].position, transform.position - heroes[1].position);
+
+        girlsHits = Physics.RaycastAll(heroes[0].position, transform.position - heroes[0].position);
+        boizHits = Physics.RaycastAll(heroes[1].position, transform.position - heroes[1].position);
         setOldMeterialToObjects(girlsHits);
         setOldMeterialToObjects(boizHits);
         foreach(RaycastHit hit in girlsHits)

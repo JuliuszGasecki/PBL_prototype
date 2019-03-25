@@ -17,7 +17,7 @@ public class RubbleManager : MonoBehaviour
 
     void OnTriggerStay(Collider collision)
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetButton("Fire1"))
         {
             string tag = collision.gameObject.tag;
             if (tag.Equals("Girl"))

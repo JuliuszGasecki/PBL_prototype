@@ -72,7 +72,7 @@ public class RockManager : MonoBehaviour
     }
     private void Aim()
     {
-        if (Input.GetMouseButton(0))
+        if (Input.GetButton("lpm"))
         {
             if (CanGirlThrow || CanBoyThrow)
             {
