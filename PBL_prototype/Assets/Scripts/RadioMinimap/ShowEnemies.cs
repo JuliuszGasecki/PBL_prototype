@@ -6,8 +6,8 @@ public class ShowEnemies : MonoBehaviour
 {
     private bool _isHacked;
     private GameObject[]_enemiesIcons;
-    private GameObject[] _enemiesLastPositionIcons;
-
+    private static GameObject[] _enemiesLastPositionIcons;
+    private static bool _isCreated;
     public GameObject LastPositionIcon;
     // Start is called before the first frame update
     void Start()
@@ -32,11 +32,16 @@ public class ShowEnemies : MonoBehaviour
 
     private void CreateLPIcons()
     {
-        for (int i = 0; i < _enemiesIcons.Length; i++)
+        if (!_isCreated)
         {
-            GameObject lp = Instantiate(LastPositionIcon) as GameObject;
+            for (int i = 0; i < _enemiesIcons.Length; i++)
+            {
+                GameObject lp = Instantiate(LastPositionIcon) as GameObject;
+            }
+
+            _enemiesLastPositionIcons = GameObject.FindGameObjectsWithTag("EnemyLPIcon");
+            _isCreated = true;
         }
-        _enemiesLastPositionIcons = GameObject.FindGameObjectsWithTag("EnemyLPIcon");
     }
 
     private void SetLPPositon()
