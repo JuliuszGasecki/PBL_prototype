@@ -19,15 +19,15 @@ public class ShowMinimap : MonoBehaviour
     void SetMapActivity()
     {
 
-        if (Input.GetButton("Map1") || Input.GetButton("Map2"))
+        if (Input.GetButtonDown("Map1") && Input.GetButtonDown("Map2"))
         {
             Map.SetActive(true);
         }
 
-        //if (Input.GetKeyUp(KeyCode.M))
-        //{
+        if (Input.GetButtonUp("Map1") && Input.GetButtonUp("Map2"))
+        {
             Map.SetActive(false);
-        //}
+        }
     }
 
 }
