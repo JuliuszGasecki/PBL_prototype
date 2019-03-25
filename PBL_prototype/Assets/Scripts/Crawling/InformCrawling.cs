@@ -5,10 +5,24 @@ using UnityEngine;
 public class InformCrawling : MonoBehaviour
 {
     public bool isStartPoint = false;
+    public bool isReady;
+
+    private void Start()
+    {
+        isReady = true;
+    }
 
     private void OnTriggerStay(Collider other)
     {
-        if(other.tag == "Girl")
+        if(other.tag == "plate")
+        {
+            isReady = false;
+        }
+        else
+        {
+            isReady = true;
+        }
+        if(other.tag == "Girl" && other.tag != "plate")
         {
             if (Input.GetButtonDown("Fire1") && !isStartPoint)
             {

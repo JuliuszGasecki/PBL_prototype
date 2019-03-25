@@ -19,7 +19,7 @@ public class Crawling : MonoBehaviour
     private void Update()
     {
         int pointsValue = checkIfStarts();
-        if(pointsValue != -1 && !isCrawling)
+        if(pointsValue != -1 && !isCrawling && teleportPoints[0].GetComponent<InformCrawling>().isReady && teleportPoints[1].GetComponent<InformCrawling>().isReady)
         {
             Crawle(pointsValue);
             isCrawling = true;
@@ -48,11 +48,11 @@ public class Crawling : MonoBehaviour
 
     private int checkIfStarts()
     {
-        if (teleportPoints[0].GetComponent<InformCrawling>().isStartPoint)
+        if (teleportPoints[0].GetComponent<InformCrawling>().isStartPoint && teleportPoints[0].GetComponent<InformCrawling>().isReady)
         {
             return 0;
         }
-        else if (teleportPoints[1].GetComponent<InformCrawling>().isStartPoint)
+        else if (teleportPoints[1].GetComponent<InformCrawling>().isStartPoint && teleportPoints[1].GetComponent<InformCrawling>().isReady)
         {
             return 1;
         }
