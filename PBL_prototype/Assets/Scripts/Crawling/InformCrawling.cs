@@ -22,7 +22,7 @@ public class InformCrawling : MonoBehaviour
         {
             isReady = true;
         }
-        if(other.tag == "Girl" && other.tag != "plate")
+        if(other.tag == "Girl" && isReady)
         {
             if (Input.GetButtonDown("Fire1") && !isStartPoint)
             {
