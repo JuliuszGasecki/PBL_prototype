@@ -18,7 +18,13 @@ public class ControlByNUM : MonoBehaviour, PlayerController
     // Update is called once per frame
     void Update()
     {
-        if(!isBlocked)
+        if (gameObject.GetComponent<Rigidbody>().isKinematic == true)
+        {
+            gameObject.GetComponent<Rigidbody>().isKinematic = false;
+        }
+
+
+        if (!isBlocked)
             updateHorizontal();
 
     }
@@ -39,5 +45,9 @@ public class ControlByNUM : MonoBehaviour, PlayerController
     public void freeControlls()
     {
         isBlocked = false;
+    }
+    private void OnCollisionExit(Collision collision)
+    {
+        gameObject.GetComponent<Rigidbody>().isKinematic = true;
     }
 }

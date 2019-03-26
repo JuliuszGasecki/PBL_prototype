@@ -19,7 +19,12 @@ public class ControlByWSAD : MonoBehaviour, PlayerController
     // Update is called once per frame
     void Update()
     {
-        if(!isBlocked)
+        if(gameObject.GetComponent<Rigidbody>().isKinematic == true)
+        {
+            gameObject.GetComponent<Rigidbody>().isKinematic = false;
+        }
+
+        if (!isBlocked)
             updateHorizontal();
 
     }
@@ -42,5 +47,10 @@ public class ControlByWSAD : MonoBehaviour, PlayerController
     {
         Debug.Log("Uwalniam chodzenie lochy");
         isBlocked = false;
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        gameObject.GetComponent<Rigidbody>().isKinematic = true;
     }
 }

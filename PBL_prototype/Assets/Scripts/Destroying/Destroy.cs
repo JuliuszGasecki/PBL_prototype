@@ -21,7 +21,7 @@ public class Destroy : MonoBehaviour
        
         if (other.tag == "Boi" )
         {           
-            if (Input.GetButtonDown("Fire1"))
+            if (Input.GetButtonDown("Fire2"))
             {
                 IDestroyable destroyable = gameObject.GetComponent<IDestroyable>();
                 if (destroyable != null)
