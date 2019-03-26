@@ -10,6 +10,8 @@ public class DetectPlayer : MonoBehaviour
     private float detectionDistance;
     [SerializeField]
     private float viewAngle;
+    [SerializeField]
+    private Texture texture;
     
     void Start()
     {
@@ -72,5 +74,18 @@ public class DetectPlayer : MonoBehaviour
             return false;
         }
         return true;
+    }
+
+    private void OnGUI()
+    {
+        foreach (GameObject player in players)
+        {
+            if (IsSeen(player, detectionDistance))
+            {
+                Rect rect = new Rect(0, 0, Screen.width/2, Screen.height/2);
+                GUI.DrawTexture(rect,texture);
+            }
+        }
+        
     }
 }

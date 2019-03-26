@@ -12,25 +12,24 @@ public class Hideout : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.tag == "Girl" || other.tag == "Boi")
+
+        if (cooldownTimer <= 0.0f && ((other.tag == "Girl" && Input.GetButton("Fire1")) || (other.tag == "Boi" && Input.GetButton("Fire2"))))
         {
-            if (cooldownTimer <= 0.0f && (Input.GetAxisRaw("Fire1") != 0 || Input.GetKeyDown(KeyCode.Alpha9)))
+            Hide hide = other.gameObject.GetComponent<Hide>();
+            if (hide.IsObjectHidden())
             {
-                Hide hide = other.gameObject.GetComponent<Hide>();
-                if (hide.IsObjectHidden())
-                {
-                    isFree = true;
-                    hide.UnhideObject();
-                    ResetTimer();
-                }
-                else if(isFree)
-                {
-                    isFree = false;
-                    hide.HideObject();
-                    ResetTimer();
-                }
+                isFree = true;
+                hide.UnhideObject();
+                ResetTimer();
+            }
+            else if (isFree)
+            {
+                isFree = false;
+                hide.HideObject();
+                ResetTimer();
             }
         }
+        
     }
 
     private void Update()
