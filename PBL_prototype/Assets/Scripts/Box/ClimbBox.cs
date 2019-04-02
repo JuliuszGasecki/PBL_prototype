@@ -151,7 +151,7 @@ public class ClimbBox : MonoBehaviour, IBoxStrategy
     {
         this.girlGameObject.GetComponent<BoxCollider>().center =
             new Vector3(this.girlGameObject.GetComponent<BoxCollider>().center.x,
-            this.girlGameObject.GetComponent<BoxCollider>().center.y + this.colliderYPositionChangerValue,
+            -.04f,
             this.girlGameObject.GetComponent<BoxCollider>().center.z);
     }
 

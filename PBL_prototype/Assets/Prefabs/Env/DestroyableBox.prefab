@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 5539452788036440434}
   - component: {fileID: 5539452788036440447}
   - component: {fileID: 5539452788036440444}
+  - component: {fileID: 38441550694747464}
   m_Layer: 9
   m_Name: DestroyableBox
   m_TagString: plate
@@ -149,3 +150,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &38441550694747464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5539452788036440436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb028720ac567484ca682d27f53b3011, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlowColor: {r: 0, g: 0, b: 0, a: 0}
+  LerpFactor: 10
+  distanceFromPlayer: 0

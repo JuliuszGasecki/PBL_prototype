@@ -1,21 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &5742340986733292770
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5742340987832704034}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80f366670fdb2104ab5f37d205c52394, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  teleportPoints:
-  - {fileID: 5742340988713377193}
-  - {fileID: 5742340987388346451}
-  crawlingTime: 0.5
 --- !u!1 &5742340987388346451
 GameObject:
   m_ObjectHideFlags: 0
@@ -75,6 +59,52 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isStartPoint: 0
   isReady: 0
+--- !u!114 &5622985837805038099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5742340987832704032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb028720ac567484ca682d27f53b3011, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlowColor: {r: 0, g: 0, b: 0, a: 0}
+  LerpFactor: 10
+  distanceFromPlayer: 0
+--- !u!114 &5742340986733292770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5742340987832704034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80f366670fdb2104ab5f37d205c52394, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teleportPoints:
+  - {fileID: 5742340988713377193}
+  - {fileID: 5742340987388346451}
+  crawlingTime: 0.5
+--- !u!114 &8973212166558937920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5742340987832704038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb028720ac567484ca682d27f53b3011, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlowColor: {r: 0, g: 0, b: 0, a: 0}
+  LerpFactor: 10
+  distanceFromPlayer: 0
 --- !u!1 &5742340988713377193
 GameObject:
   m_ObjectHideFlags: 0
@@ -234,11 +264,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.8916
       objectReference: {fileID: 0}
-    - target: {fileID: 2300000, guid: 7e1bacebcc6b76646a9cd498a8511989, type: 3}
+    - target: {fileID: 2300002, guid: 7e1bacebcc6b76646a9cd498a8511989, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: f422b9b7757ad554f99fb04bea3bd26d, type: 2}
-    - target: {fileID: 2300002, guid: 7e1bacebcc6b76646a9cd498a8511989, type: 3}
+    - target: {fileID: 2300000, guid: 7e1bacebcc6b76646a9cd498a8511989, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: f422b9b7757ad554f99fb04bea3bd26d, type: 2}
@@ -253,6 +283,18 @@ GameObject:
 --- !u!4 &5742340987832270850 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 7e1bacebcc6b76646a9cd498a8511989,
+    type: 3}
+  m_PrefabInstance: {fileID: 5742340987832670850}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5742340987832704032 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100002, guid: 7e1bacebcc6b76646a9cd498a8511989,
+    type: 3}
+  m_PrefabInstance: {fileID: 5742340987832670850}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5742340987832704038 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100004, guid: 7e1bacebcc6b76646a9cd498a8511989,
     type: 3}
   m_PrefabInstance: {fileID: 5742340987832670850}
   m_PrefabAsset: {fileID: 0}
