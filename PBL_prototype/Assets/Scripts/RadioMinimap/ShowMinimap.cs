@@ -24,7 +24,7 @@ public class ShowMinimap : MonoBehaviour
             Map.SetActive(true);
         }
 
-        if (Input.GetButtonUp("Map1") && Input.GetButtonUp("Map2"))
+        if (!Input.GetButton("Map1") || !Input.GetButton("Map2"))
         {
             Map.SetActive(false);
         }
