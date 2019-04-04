@@ -10,6 +10,11 @@ public class PackageTarget : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Invoke("addPackageID", 1);
+    }
+
+    void addPackageID()
+    {
         packageID = PackageManager.PackageManagerInstance.getLatestID();
     }
 

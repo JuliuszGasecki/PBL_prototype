@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class GlowObjectCmd : MonoBehaviour
 {
-	public Color GlowColor;
+	public Color GlowColor = Color.yellow;
 	public float LerpFactor = 10;
     public float distanceFromPlayer;
 
@@ -26,8 +26,8 @@ public class GlowObjectCmd : MonoBehaviour
 
 	void Start()
 	{
-        GlowColor = new Color(150,150,150);
-        distanceFromPlayer = 3;
+        GlowColor = Color.yellow;
+        distanceFromPlayer = 2;
         girl = GameObject.Find("Girl").transform;
         boi = GameObject.Find("Boi").transform;
         Renderers = GetComponentsInChildren<Renderer>();

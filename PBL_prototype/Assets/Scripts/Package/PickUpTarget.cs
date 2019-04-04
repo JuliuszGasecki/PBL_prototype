@@ -9,7 +9,7 @@ public class PickUpTarget : MonoBehaviour
         if(other.tag == "Girl" || other.tag == "Boi")
         {
             //Debug.Log("Podnoszem skrzynkę");
-            if (Input.GetAxisRaw("Fire1") != 0 || Input.GetKeyDown(KeyCode.Alpha9))
+            if (Input.GetAxisRaw("Fire1") != 0 || Input.GetAxisRaw("Fire2") != 0)
             {
                 gameObject.GetComponent<MeshRenderer>().enabled = false;
             }
