@@ -12,6 +12,14 @@ TagManager:
   - EnemyLPIcon
   - FallCollider
   - plate
+  - building
+  - plane
+  - enemyBuilding
+  - box
+  - gutter
+  - balconyBuilding
+  - balcony
+  - wall
   layers:
   - Default
   - TransparentFX
