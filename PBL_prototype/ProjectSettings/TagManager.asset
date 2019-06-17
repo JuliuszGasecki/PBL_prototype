@@ -20,6 +20,16 @@ TagManager:
   - balconyBuilding
   - balcony
   - wall
+  - sandbag
+  - highGround
+  - saveTrigger
+  - boy
+  - girl
+  - radio
+  - tunnel
+  - hide
+  - ropeBase
+  - rubble
   layers:
   - Default
   - TransparentFX
