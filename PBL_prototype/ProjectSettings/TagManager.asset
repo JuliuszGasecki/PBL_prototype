@@ -30,6 +30,21 @@ TagManager:
   - hide
   - ropeBase
   - rubble
+  - package
+  - dialogueTrigger
+  - tram
+  - truck
+  - tramRails
+  - tramTurn
+  - tramDestroyed
+  - hedgehog
+  - barrel
+  - pallet
+  - plateWallClosed
+  - plateWallOpen
+  - barbedwire
+  - wakableHeightTwo
+  - plateWallTwo
   layers:
   - Default
   - TransparentFX
