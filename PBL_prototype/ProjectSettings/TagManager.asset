@@ -45,6 +45,7 @@ TagManager:
   - barbedwire
   - wakableHeightTwo
   - plateWallTwo
+  - staticEnemy
   layers:
   - Default
   - TransparentFX
