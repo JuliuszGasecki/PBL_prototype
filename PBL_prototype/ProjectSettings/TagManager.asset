@@ -46,6 +46,7 @@ TagManager:
   - wakableHeightTwo
   - plateWallTwo
   - staticEnemy
+  - lamp
   layers:
   - Default
   - TransparentFX
