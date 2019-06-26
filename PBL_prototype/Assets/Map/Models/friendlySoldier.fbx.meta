@@ -1,0 +1,207 @@
+fileFormatVersion: 2
+guid: 434facbe93b8ec64a93b875e245eae24
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: soldier
+    100004: SoldierHIK_Head
+    100006: SoldierHIK_Hips
+    100008: SoldierHIK_Left_Index1
+    100010: SoldierHIK_Left_Index2
+    100012: SoldierHIK_Left_Index3
+    100014: SoldierHIK_Left_Middle1
+    100016: SoldierHIK_Left_Middle2
+    100018: SoldierHIK_Left_Middle3
+    100020: SoldierHIK_Left_Pinkie1
+    100022: SoldierHIK_Left_Pinkie2
+    100024: SoldierHIK_Left_Pinkie3
+    100026: SoldierHIK_Left_Ring1
+    100028: SoldierHIK_Left_Ring2
+    100030: SoldierHIK_Left_Ring3
+    100032: SoldierHIK_Left_Thumb1
+    100034: SoldierHIK_Left_Thumb2
+    100036: SoldierHIK_Left_Thumb3
+    100038: SoldierHIK_LeftArm
+    100040: SoldierHIK_LeftFoot
+    100042: SoldierHIK_LeftForeArm
+    100044: SoldierHIK_LeftHand
+    100046: SoldierHIK_LeftLeg
+    100048: SoldierHIK_LeftShoulder
+    100050: SoldierHIK_LeftToeBase
+    100052: SoldierHIK_LeftUpLeg
+    100054: SoldierHIK_Neck
+    100056: SoldierHIK_Reference
+    100058: SoldierHIK_Right_Index1
+    100060: SoldierHIK_Right_Index2
+    100062: SoldierHIK_Right_Index3
+    100064: SoldierHIK_Right_Middle1
+    100066: SoldierHIK_Right_Middle2
+    100068: SoldierHIK_Right_Middle3
+    100070: SoldierHIK_Right_Pinkie1
+    100072: SoldierHIK_Right_Pinkie2
+    100074: SoldierHIK_Right_Pinkie3
+    100076: SoldierHIK_Right_Ring1
+    100078: SoldierHIK_Right_Ring2
+    100080: SoldierHIK_Right_Ring3
+    100082: SoldierHIK_Right_Thumb1
+    100084: SoldierHIK_Right_Thumb2
+    100086: SoldierHIK_Right_Thumb3
+    100088: SoldierHIK_RightArm
+    100090: SoldierHIK_RightFoot
+    100092: SoldierHIK_RightForeArm
+    100094: SoldierHIK_RightHand
+    100096: SoldierHIK_RightLeg
+    100098: SoldierHIK_RightShoulder
+    100100: SoldierHIK_RightToeBase
+    100102: SoldierHIK_RightUpLeg
+    100104: SoldierHIK_Spine
+    100106: SoldierHIK_Spine1
+    100108: SoldierHIK_Spine2
+    400000: //RootNode
+    400002: soldier
+    400004: SoldierHIK_Head
+    400006: SoldierHIK_Hips
+    400008: SoldierHIK_Left_Index1
+    400010: SoldierHIK_Left_Index2
+    400012: SoldierHIK_Left_Index3
+    400014: SoldierHIK_Left_Middle1
+    400016: SoldierHIK_Left_Middle2
+    400018: SoldierHIK_Left_Middle3
+    400020: SoldierHIK_Left_Pinkie1
+    400022: SoldierHIK_Left_Pinkie2
+    400024: SoldierHIK_Left_Pinkie3
+    400026: SoldierHIK_Left_Ring1
+    400028: SoldierHIK_Left_Ring2
+    400030: SoldierHIK_Left_Ring3
+    400032: SoldierHIK_Left_Thumb1
+    400034: SoldierHIK_Left_Thumb2
+    400036: SoldierHIK_Left_Thumb3
+    400038: SoldierHIK_LeftArm
+    400040: SoldierHIK_LeftFoot
+    400042: SoldierHIK_LeftForeArm
+    400044: SoldierHIK_LeftHand
+    400046: SoldierHIK_LeftLeg
+    400048: SoldierHIK_LeftShoulder
+    400050: SoldierHIK_LeftToeBase
+    400052: SoldierHIK_LeftUpLeg
+    400054: SoldierHIK_Neck
+    400056: SoldierHIK_Reference
+    400058: SoldierHIK_Right_Index1
+    400060: SoldierHIK_Right_Index2
+    400062: SoldierHIK_Right_Index3
+    400064: SoldierHIK_Right_Middle1
+    400066: SoldierHIK_Right_Middle2
+    400068: SoldierHIK_Right_Middle3
+    400070: SoldierHIK_Right_Pinkie1
+    400072: SoldierHIK_Right_Pinkie2
+    400074: SoldierHIK_Right_Pinkie3
+    400076: SoldierHIK_Right_Ring1
+    400078: SoldierHIK_Right_Ring2
+    400080: SoldierHIK_Right_Ring3
+    400082: SoldierHIK_Right_Thumb1
+    400084: SoldierHIK_Right_Thumb2
+    400086: SoldierHIK_Right_Thumb3
+    400088: SoldierHIK_RightArm
+    400090: SoldierHIK_RightFoot
+    400092: SoldierHIK_RightForeArm
+    400094: SoldierHIK_RightHand
+    400096: SoldierHIK_RightLeg
+    400098: SoldierHIK_RightShoulder
+    400100: SoldierHIK_RightToeBase
+    400102: SoldierHIK_RightUpLeg
+    400104: SoldierHIK_Spine
+    400106: SoldierHIK_Spine1
+    400108: SoldierHIK_Spine2
+    2100000: lambert1
+    4300000: soldier
+    7400000: idle
+    7400002: lookAround
+    9500000: //RootNode
+    13700000: soldier
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

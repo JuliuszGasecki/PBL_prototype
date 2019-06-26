@@ -47,6 +47,13 @@ TagManager:
   - plateWallTwo
   - staticEnemy
   - lamp
+  - friend
+  - EnemyPoint
+  - light
+  - wClear
+  - wLight
+  - wMid
+  - wHard
   layers:
   - Default
   - TransparentFX
